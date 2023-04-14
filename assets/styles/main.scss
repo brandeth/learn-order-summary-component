@@ -1,0 +1,235 @@
+// import font from google fonts - Family: [Red Hat Display](https://fonts.google.com/specimen/Red+Hat+Display)
+// - Weights: 500, 700, 900
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
+
+// variables for the colors
+// - Pale blue: hsl(225, 100%, 94%)
+// - Bright blue: hsl(245, 75%, 52%)
+// - Very pale blue: hsl(225, 100%, 98%)
+// - Desaturated blue: hsl(224, 23%, 55%)
+// - Dark blue: hsl(223, 47%, 23%)
+
+:root {
+    --bright-blue: hsl(245, 75%, 52%);
+    --bright-blue-light: hsla(245, 75%, 52%, 0.5);
+    --desaturated-blue: hsl(224, 23%, 55%);
+    --dark-blue: hsl(223, 47%, 23%);
+    --font-size-default: 16px;
+    --pale-blue: hsl(225, 100%, 94%);
+    --transition: 0.3s ease-in-out;
+    --very-pale-blue: hsl(225, 100%, 98%);
+}
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    3. Allow percentage-based heights in the application
+  */
+  html, body {
+    height: 100%;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: var(--font-size-default);
+  }
+  /*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    6. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    7. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    8. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    9. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  .main {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    // add the background image from assets/images/pattern-background-desktop.svg with overlay color with opacity 0.5
+    background-image: url('../images/pattern-background-mobile.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    // add the overlay color
+    background-color: hsla(225, 100%, 94%, 0.5);
+    background-blend-mode: overlay;
+    padding: 1rem;
+
+    .attribution {
+        font-size: 0.75rem;
+        text-align: center;
+        color: var(--desaturated-blue);
+        margin-top: 1rem;
+
+        a {
+            color: var(--bright-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--bright-blue-light);
+            text-decoration-color: transparent;
+        }
+    }
+  }
+
+  .OrderSummary {
+    border-radius: 1rem;
+    max-width: 28.125rem;
+    overflow: hidden;
+    // add box shadow
+    box-shadow: 0 0.5rem 1rem hsla(223, 47%, 23%, 0.1);
+
+    &-button {
+        width: 100%;
+        background-color: var(--bright-blue);
+        color: white;
+        border-radius: 0.75rem;
+        padding: 0.75rem 0.5rem;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    &-button:hover {
+        background-color: var(--bright-blue-light);
+    }
+
+    &-buttonContainer {
+        width: 100%;
+    }
+
+    &-cancel {
+        a {
+            font-weight: 700;
+            color: var(--desaturated-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--dark-blue);
+            text-decoration-color: transparent;
+        }
+    }
+
+    &-change {
+        a {
+            font-weight: 700;
+            color: var(--bright-blue);
+            transition: all var(--transition);
+        }
+
+        a:hover {
+            color: var(--bright-blue-light);
+            text-decoration-color: transparent;
+        }
+    }
+
+    &-content {
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+
+    &-description {
+        p {
+            color: var(--desaturated-blue);
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+    }
+
+    &-plan {
+        color: var(--dark-blue);
+        font-weight: 900;
+    }
+
+    &-planContainer {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 1.5rem;
+        align-items: center;
+        border-radius: 0.75rem;
+        background-color: var(--very-pale-blue);
+        padding: 1rem;
+        margin: 0.75rem auto;
+    }
+
+    &-price {
+        color: var(--desaturated-blue);
+    }
+
+    &-title {
+        h1 {
+            color: var(--dark-blue);
+            font-weight: 900;
+            font-size: 24px;
+        }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .main {
+        background-image: url('../images/pattern-background-desktop.svg');
+
+        // add the overlay color
+        background-color: hsla(225, 100%, 94%, 0.5);
+    }
+
+    .OrderSummary {
+        &-content {
+            padding: 2.5rem 2.5rem;
+        }
+
+        &-description {
+            p {
+                padding: 0 2.5rem;
+            }
+        }
+    }
+  }
