@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+useHead({
+  title: 'Order Summary - Rey Garcia',
+  meta: [
+    { name: 'description', content: 'Front-End Coding Challenge by Frontend Mentor. Coded by Rey Garcia' }
+  ]
+})
+</script>
+
 <template>
   <div class="main">
     <OrderSummary />
